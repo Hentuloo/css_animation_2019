@@ -1,0 +1,228 @@
+.white-section {
+	.b1 {
+		div {
+			@extend .center;
+			width: 100px;
+			height: 100px;
+			background-color: $greenDark;
+			border-radius: 50%;
+			box-sizing: border-box;
+			border-left: 50px $green solid;
+			border-top: 50px transparent solid;
+			border-right: 50px transparent solid;
+			border-bottom: 50px transparent solid;
+			transition: all 3s linear;
+			animation: wb1 linear 5s infinite forwards;
+
+			&::before {
+				@extend .pseudoElementCenter;
+				width: 8px;
+				height: 8px;
+				background-color: black;
+				border-radius: 50%;
+			}
+		}
+	}
+
+	.b2 {
+		div {
+			@extend .center;
+			font-size: 2em;
+			text-transform: uppercase;
+			color: white;
+			font-weight: bold;
+			padding: 10px 20px;
+			cursor: pointer;
+
+			&::after {
+				@extend .pseudoElementCenter;
+				width: 100%;
+				height: 100%;
+				background-color: $blue;
+				z-index: -1;
+			}
+
+			&::before {
+				@extend .pseudoElementCenter;
+				width: 90%;
+				height: 70%;
+				box-shadow: 1px 7px 4px 15px $blueDark;
+				z-index: -2;
+			}
+
+			&:hover {
+				transform: translate(-50%, calc(-50% + 6px));
+			}
+
+			&:hover::after {
+				transform: translate(-50%, calc(-50%));
+			}
+
+			&:hover::before {
+				transform: translate(-50%, calc(-50% - 6px));
+			}
+		}
+	}
+
+	.b3 {
+		div {
+			&::after,
+			&::before {
+				@extend .pseudoElementCenter;
+				width: 30px;
+				height: 30px;
+				border: 2px $orangeDark solid;
+				border-radius: 50%;
+			}
+
+			&::before {
+				opacity: 0;
+				animation: wb3 1.4s 0.7s linear forwards infinite;
+			}
+
+			&::after {
+				animation: wb3 1.4s 0s linear forwards infinite;
+			}
+		}
+	}
+
+	.b4 {
+		@extend .center;
+		width: 100px;
+		height: 100px;
+
+		div {
+			@extend .center;
+			width: 100px;
+			height: 100px;
+			border-radius: 45% 45%;
+			border-top: 20px $blueDark solid;
+			animation: wb4 2s 0.6666s linear infinite forwards;
+		}
+
+		&::after {
+			@extend .center;
+			width: 80%;
+			height: 50%;
+			border-top: 20px $greenDark solid;
+			border-radius: 50%;
+			transform: translate(-50%, calc(-50% + 10px));
+			animation: wb4 2s 0.3333s linear infinite forwards;
+		}
+
+		&::before {
+			@extend .pseudoElementCenter;
+			width: 30%;
+			height: 30%;
+			background-color: black;
+			border-radius: 50%;
+			transform: translate(-50%, calc(-50% + 25px));
+			animation: wb4 2s 0s linear infinite forwards;
+		}
+	}
+
+	.b5 {
+		div {
+			@extend .center;
+			width: 60px;
+			height: 60px;
+			background-color: rgb(255, 255, 255);
+			border-radius: 50%;
+			border: 6px solid $pinkDark;
+			position: relative;
+			cursor: pointer;
+			&::after {
+				display: none;
+				@extend .pseudoElementCenter;
+				width: 60%;
+				height: 60%;
+				background-color: $pinkDark;
+				border-radius: 50%;
+				box-shadow: 0px 0px 3px 2px $pinkDark;
+			}
+			&:hover::after {
+				display: block;
+			}
+		}
+	}
+}
+
+@keyframes wb1 {
+	0% {
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+
+	10% {
+		transform: translate(-50%, -50%) rotate(40deg);
+	}
+
+	20% {
+		transform: translate(-50%, -50%) rotate(-30deg);
+	}
+
+	30% {
+		transform: translate(-50%, -50%) rotate(10deg);
+	}
+
+	40% {
+		transform: translate(-50%, -50%) rotate(60deg);
+	}
+
+	50% {
+		transform: translate(-50%, -50%) rotate(120deg);
+	}
+
+	60% {
+		transform: translate(-50%, -50%) rotate(150deg);
+	}
+
+	70% {
+		transform: translate(-50%, -50%) rotate(140deg);
+	}
+
+	80% {
+		transform: translate(-50%, -50%) rotate(180deg);
+	}
+
+	90% {
+		transform: translate(-50%, -50%) rotate(190deg);
+	}
+
+	100% {
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+}
+
+@keyframes wb3 {
+	0% {
+		opacity: 0.1;
+		transform: translate(-50%, -50%) scale(1);
+	}
+
+	40% {
+		opacity: 1;
+	}
+
+	100% {
+		transform: translate(-50%, -50%) scale(3);
+		opacity: 0;
+	}
+}
+
+@keyframes wb4 {
+	0% {
+		opacity: 1;
+	}
+
+	33% {
+		opacity: 0.4;
+	}
+
+	60% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}

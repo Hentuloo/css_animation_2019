@@ -1,0 +1,226 @@
+.black-section {
+	.b6 {
+		div {
+			@extend .center;
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			background-color: white;
+
+			&::after {
+				@extend .pseudoElementCenter;
+				width: 120%;
+				height: 120%;
+				border: 1px white solid;
+				border-radius: 50%;
+				animation: bb6 0.6s linear infinite forwards;
+			}
+		}
+	}
+	.b7 {
+		@extend .center;
+		width: 30px;
+		height: 30px;
+		div {
+			@extend .center;
+			width: 30px;
+			height: 30px;
+			&::after,
+			&::before {
+				@extend .pseudoElementCenter;
+				width: 100%;
+				height: 100%;
+				background-color: $pinkDark;
+			}
+			&::after {
+				transform: translate(-100%, 0%);
+				animation: bb7 1s 0.75s linear infinite forwards;
+			}
+			&::before {
+				transform: translate(0%, 0%);
+				animation: bb7 1s 0.5s linear infinite forwards;
+			}
+		}
+		&::after,
+		&::before {
+			@extend .pseudoElementCenter;
+			width: 100%;
+			height: 100%;
+			background-color: $pinkDark;
+		}
+		&::after {
+			transform: translate(-100%, -100%);
+			animation: bb7 1s 0s linear infinite forwards;
+		}
+		&::before {
+			transform: translate(0%, -100%);
+			animation: bb7 1s 0.25s linear infinite forwards;
+		}
+	}
+	.b8 {
+		@extend .center;
+		width: 15px;
+		height: 15px;
+		div {
+			@extend .center;
+			width: 15px;
+			height: 15px;
+			background-color: $blueDark;
+			border-radius: 50%;
+			animation: bb8 0.9s 0.3333s linear infinite alternate;
+		}
+		&::after,
+		&::before {
+			@extend .pseudoElementCenter;
+			width: 100%;
+			height: 100%;
+			background-color: $blueDark;
+			border-radius: 50%;
+		}
+		&::after {
+			left: -200%;
+			animation: bb8 0.9s 0s linear infinite alternate;
+		}
+		&::before {
+			left: 300%;
+			animation: bb8 0.9s 0.6666s linear infinite alternate;
+		}
+	}
+	.b9 {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		cursor: pointer;
+		div {
+			@extend .center;
+			width: 70px;
+			height: 70px;
+			&::after,
+			&::before {
+				@extend .pseudoElementCenter;
+				width: 100%;
+				height: 100%;
+				color: white;
+				font-size: 50px;
+				text-align: center;
+				line-height: 70px;
+				background-color: white;
+				// border: 3px white solid;
+				transition: transform 0.5s linear;
+			}
+			&::after {
+				content: "G";
+				transform: translate(-50%, 0%) rotate3d(1, 0, 0, 90deg);
+				background-color: $blueDark;
+			}
+			&::before {
+				content: "G";
+				transform: translate(-50%, -50%) rotate3d(1, 0, 0, 0deg);
+				background-color: $blue;
+			}
+		}
+		&:hover div::after {
+			transform: translate(-50%, -50%) rotate3d(1, 0, 0, 0deg);
+		}
+		&:hover div::before {
+			transform: translate(-50%, -100%) rotate3d(1, 0, 0, 90deg);
+		}
+	}
+	.b10 {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		padding: 10px 10px;
+		box-sizing: border-box;
+		font-size: 20px;
+		cursor: pointer;
+		div {
+			position: relative;
+			width: 100%;
+			height: 70px;
+			overflow: hidden;
+
+			span {
+				position: absolute;
+				left: 50%;
+				top: 0%;
+				transform: translate(-50%, 0%);
+				background-color: transparent;
+				text-align: center;
+			}
+			&::after,
+			&::before {
+				@extend .pseudoElementCenter;
+				width: 110%;
+				height: 20px;
+				border-radius: 10px;
+			}
+			&::after {
+				background-color: $orange;
+				width: 110%;
+				transform: translate(-125%, -50%);
+				transition: transform 0.8s ease-in-out;
+			}
+			&::before {
+				width: 100%;
+				background-color: gray;
+				bottom: 0%;
+			}
+		}
+		div:nth-of-type(2) {
+			&::after {
+				transform: translate(-136%, -50%);
+				background-color: $green;
+				transition: transform 0.8s 0.2s ease-in-out;
+			}
+		}
+
+		&:hover div:nth-of-type(1)::after {
+			transform: translate(-60%, -50%);
+		}
+		&:hover div:nth-of-type(2)::after {
+			transform: translate(-70%, -50%);
+		}
+	}
+}
+
+@keyframes bb6 {
+	from {
+		transform: translate(-50%, -50%) scale(1);
+		opacity: 1;
+	}
+
+	to {
+		transform: translate(-50%, -50%) scale(1.3);
+		opacity: 0.2;
+	}
+}
+@keyframes bb7 {
+	0% {
+		opacity: 1;
+	}
+	95% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+@keyframes bb8 {
+	0% {
+		opacity: 0.2;
+		transform: translate(-50%, -50%) scale(1);
+	}
+	30% {
+		opacity: 0.2;
+		transform: translate(-50%, -50%) scale(1);
+	}
+	90% {
+		opacity: 1;
+		transform: translate(-50%, -50%) scale(2);
+	}
+	100% {
+		opacity: 1;
+		transform: translate(-50%, -50%) scale(2);
+	}
+}
